@@ -1,0 +1,49 @@
+@use "clip-paths" as *;
+
+.container {
+  --_reflection-blur-amount: 3px;
+  --_pedal-width: 212px;
+  position: relative;
+  container-type: inline-size;
+  inline-size: calc(var(--_pedal-width) + var(--_reflection-blur-amount) * 4);
+  flex-shrink: 0;
+}
+
+.wrapper {
+  // Need to wrap the pedal with some padding so the reflection blur isn't cut off
+  padding: calc(var(--_reflection-blur-amount) * 2);
+}
+
+.pedal {
+  block-size: 395px;
+  inline-size: var(--_pedal-width);
+  background-color: hsl(0, 0%, 93%);
+  border-radius: 24px;
+  clip-path: $main-path;
+}
+
+.glow {
+  position: absolute;
+  inset-block-start: calc(var(--_pedal-width) / 3);
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  inline-size: 500px;
+  block-size: 250px;
+  background-color: var(--color-blue-500);
+  filter: blur(150px);
+  background-size: cover;
+  border-radius: 100%;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.reflection {
+  position: absolute;
+  inset-block-start: 100%;
+  margin-block-start: calc(var(--_reflection-blur-amount) * 4 * -1);
+  scale: 1 -1;
+  pointer-events: none;
+  opacity: 0.5;
+  filter: blur(var(--_reflection-blur-amount));
+  mask-image: linear-gradient(to top, black, transparent 220px);
+}

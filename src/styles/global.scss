@@ -1,5 +1,6 @@
 :root {
-  --color-primary-500: hsl(74, 64.3%, 59.4%);
+  --color-blue-500: hsl(198, 100%, 59%);
+  --color-background: hsl(255, 20%, 15%);
 }
 
 *,
@@ -15,4 +16,17 @@
 html {
   -webkit-text-size-adjust: 100%;
   tab-size: 4;
+  background-color: var(--color-background);
+  color: black;
+  font:
+    400 1em/1.5 Arial,
+    system-ui;
+  overflow-x: hidden;
+}
+
+#root {
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  block-size: 100svh;
 }

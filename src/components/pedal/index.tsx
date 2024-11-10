@@ -1,1 +1,0 @@
-export { Pedal } from "./pedal";
